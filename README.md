@@ -9,32 +9,31 @@
 ---
 config:
   theme: base
+  themeVariables:
+    lineColor: '#D94802'
+    primaryTextColor: '#080808'
+    primaryBorderColor: '#D94802'
+    edgeLabelBackground: '#ffffff'
   layout: elk
 ---
 flowchart TD
-    %% Entidades (rectángulos)
     B[STUDENTS]
     E[CLASS]
     G[COURSES]
     
-    %% Atributos (óvalos) - STUDENTS
     A((student_id))
     C((student_name))
     
-    %% Atributos (óvalos) - CLASS
     D((classroom_id))
     F((classroom_description))
     
-    %% Atributos (óvalos) - COURSES
     H((languages))
     I((course_id))
     
-    %% Relaciones (rombos)
     J{belongs_to}
     K{has}
     L{takes}
     
-    %% Conexiones de atributos a entidades
     A --- B
     C --- B
     D --- E
@@ -42,7 +41,6 @@ flowchart TD
     H --- G
     I --- G
     
-    %% Relaciones entre entidades con cardinalidades
     B ---|N| J
     J ---|1| E
     E ---|1| K
@@ -50,10 +48,10 @@ flowchart TD
     B ---|N| L
     L ---|N| G
     
-    %% Subrayado para claves primarias
     style A fill:#DBB38C,stroke:#D94802,stroke-width:1px
     style D fill:#DBB38C,stroke:#D94802,stroke-width:1px  
     style I fill:#DBB38C,stroke:#D94802,stroke-width:1px
+
 ```
 
 
