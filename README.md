@@ -5,6 +5,57 @@
 
 ### Chen diagram
 
+```mermaid
+---
+config:
+  theme: base
+  layout: elk
+---
+flowchart TD
+    %% Entidades (rectángulos)
+    B[STUDENTS]
+    E[CLASS]
+    G[COURSES]
+    
+    %% Atributos (óvalos) - STUDENTS
+    A((student_id))
+    C((student_name))
+    
+    %% Atributos (óvalos) - CLASS
+    D((classroom_id))
+    F((classroom_description))
+    
+    %% Atributos (óvalos) - COURSES
+    H((languages))
+    I((course_id))
+    
+    %% Relaciones (rombos)
+    J{belongs_to}
+    K{has}
+    L{takes}
+    
+    %% Conexiones de atributos a entidades
+    A --- B
+    C --- B
+    D --- E
+    F --- E
+    H --- G
+    I --- G
+    
+    %% Relaciones entre entidades con cardinalidades
+    B ---|N| J
+    J ---|1| E
+    E ---|1| K
+    K ---|N| G
+    B ---|N| L
+    L ---|N| G
+    
+    %% Subrayado para claves primarias
+    style A fill:#DBB38C,stroke:#D94802,stroke-width:1px
+    style D fill:#DBB38C,stroke:#D94802,stroke-width:1px  
+    style I fill:#DBB38C,stroke:#D94802,stroke-width:1px
+```
+
 
 ### Database Schema
 
