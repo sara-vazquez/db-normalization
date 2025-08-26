@@ -9,31 +9,38 @@
 ### Database Schema
 
 ```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryTextColor': '#080808',
+    'primaryBorderColor': '#D94802',
+    'lineColor': '#D94802',
+    'background': '#D9A702',
+    'mainBkg': '#DBB38C',
+    'secondBkg': '#D9A702',
+    'tertiaryBkg': '#D9A702'
+  }
+}}%%
 erDiagram
-    CLASS {
+
+    CLASSROOM {
         int classroom_id PK
         string classroom_description
     }
-
+    
     STUDENTS {
         int student_id PK
         string student_name
         int classroom_id FK
     }
-
+    
     COURSES {
         int course_id PK
-        string lenguages
+        string languages
         int classroom_id FK
     }
-
-    ENROLLMENT {
-        int student_id PK,FK
-        int course_id PK,FK
-    }
-
-    CLASS ||--o{ STUDENTS : "has"
-    CLASS ||--o{ COURSES : "offers"
-    STUDENTS }|--|{ ENROLLMENT : "enrolls in"
-    COURSES }|--|{ ENROLLMENT : "is taken by"
-    ```
+    
+    CLASSROOM ||--o{ STUDENTS : "has"
+    CLASSROOM ||--o{ COURSES : "offers"
+    STUDENTS }o--o{ COURSES : "takes"
+```
